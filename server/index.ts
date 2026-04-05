@@ -3,8 +3,15 @@ import { fileURLToPath } from "url";
 import path from "path";
 import { registerRoutes } from "./routes.js";
 
+const entryUrl = import.meta.url;
+const isBundledBuild =
+  entryUrl.includes("/dist/index.js") || entryUrl.includes("\\dist\\index.js");
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = isBundledBuild ? "production" : "development";
+}
+
 const app = express();
-const port = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 3001;
+const port = Number(process.env.PORT || process.env.SERVER_PORT) || 3001;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isProd = process.env.NODE_ENV === "production";
 
