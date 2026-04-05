@@ -1,0 +1,39 @@
+{
+  "name": "birthday-surprise",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development tsx watch server/index.ts",
+    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "check": "tsc",
+    "build:frontend": "vite build",
+    "preview": "vite preview",
+    "client": "vite --host 0.0.0.0",
+    "server": "cross-env NODE_ENV=development tsx watch server/index.ts"
+  },
+  "dependencies": {
+    "express": "^4.22.1",
+    "framer-motion": "^11.18.2",
+    "lucide-react": "^0.441.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.25",
+    "@types/node": "^22.19.17",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.27",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.25.12",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^3.4.19",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21"
+  }
+}
